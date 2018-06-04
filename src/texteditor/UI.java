@@ -5,13 +5,13 @@
  */
 package texteditor;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
@@ -33,6 +33,15 @@ public class UI extends javax.swing.JFrame {
     /**
      * Creates new form UI
      */
+//    class CloseButtonAction implements ActionListener{
+//
+//        @Override                                                             //Concrete class implementation
+//        public void actionPerformed(ActionEvent e) {
+//           jTabbedPane1.removeTabAt(jTabbedPane1.getSelectedIndex());
+//           tabcount--;
+//        }
+//        
+//    }
     int tabcount=0;
     public UI() {
         initComponents();
@@ -42,6 +51,11 @@ public class UI extends javax.swing.JFrame {
         JPanel pTab=new JPanel();
         JButton CrossButton =new JButton("X");
         JLabel TabTitle=new JLabel("Untitled");
+       // CrossButton.addActionListener(new CloseButtonAction() );
+        CrossButton.addActionListener((ActionEvent e) -> {
+            jTabbedPane1.removeTabAt(jTabbedPane1.getSelectedIndex());
+            tabcount--;
+        });
         pTab.add(TabTitle);
         pTab.add(CrossButton);
         return pTab;
